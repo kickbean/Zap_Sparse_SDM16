@@ -73,6 +73,7 @@
 \newenvironment{remark}{\emph{Remark.}}
 
 \newcommand{\Songfan}[1]{\textcolor{red}{#1}}
+\newcommand{\SFAdd}[1]{\textcolor{blue}{#1}}
 
 \begin{document}
 
@@ -131,7 +132,7 @@ To study the spontaneous consumer facial expressions during ad watching, an inte
 
 \subsection{Facial Expression Data.}
 
-A facial expression dataset for online advertising analysis~\cite{Yang_FG15} is used in our experiments. In this dataset, 51 subjects were invited to watch multiple ads, each of which ranges from 30 to 90 seconds. Among those subjects, 16 are female and 35 are male. Regarding ethnicity, there are 9 Caucasians, 14 Asian Americans, 18 Asians, 8 Hispanics, and 2 African Americans. When watching an ad, a user can choose to finish watching or zap before it ends. In either case, 30 seconds were allowed for the user to neutralize their emotions. The selected 8 ads in our experiments cover two most popular categories: \textit{Car} and \textit{Fast Food}. These ads have various entertaining levels based on their contents. Here, we use a scalar from 0 to 10 to rate the entertaining level of an ad from low to high. The scores for the ads were rated by an independent group of subjects and the averaged scores are used. Table~\ref{table:ads} lists the ads information. In general the \textit{Car} ads are more entertaining than the \textit{Fast Food} ads with \textit{Toyota} and \textit{Nissan} being the two most amusing ones. All ads are available on primary websites such as YouTube. The playback order for these ads were randomized for each subject to diminish the ordering impact. 
+A facial expression dataset for online advertising analysis~\cite{Yang_FG15} is used in our experiments. In this dataset, 51 subjects were invited to watch multiple ads, each of which ranges from 30 to 90 seconds. Among those subjects, 16 are female and 35 are male. Regarding ethnicity, there are 9 Caucasians, 14 Asian Americans, 18 Asians, 8 Hispanics, and 2 African Americans. When watching an ad, a user can choose to finish watching or zap before it ends. In either case, 30 seconds were allowed for the user to neutralize their emotions. The selected 8 ads in our experiments cover two most popular categories: \textit{Car} and \textit{Fast Food}. \Songfan{These two categories have less gender bias compared with categories such \textit{Beer} or \textit{Makeup}. The selected ads are from recognizable brands that have various entertaining levels based on their contents.} Here, we use a scalar from 0 to 10 to rate the entertaining level of an ad from low to high. The scores for the ads were rated by an independent group of subjects and the averaged scores are used. Table~\ref{table:ads} lists the ads information. In general the \textit{Car} ads are more entertaining than the \textit{Fast Food} ads with \textit{Toyota} and \textit{Nissan} being the two most amusing ones. All ads are available on primary websites such as YouTube. The playback order for these ads were randomized for each subject to diminish the ordering impact. 
 
 
 \begin{table*}[!t]
@@ -162,18 +163,36 @@ Among common facial expressions, such as \textit{fear} or \textit{sadness}, smil
 
 \item In terms of facial expression response to ad watching, smile directly reflects the entertaining level of ads. It is observed that more than 95\% of the detected expressions are smile in our dataset. A similar observation is also made recently~\cite{amfed}. 
 
-\item As an extensively studied facial expression, smile and its intensity can be accurately detected on a per frame basis and with simple features and an SVM classifier, smile classification can achieve an area under the curve (AUC) of 0.95~\cite{Yang_TAC14}. Examples of smile responses associated with zapping and non-zapping behavior are shown in Fig.~\ref{fig:smile_ex}. We direct interested readers to~\cite{Yang_TAC14} for a more detailed description on how to estimate the smile intensity.
+\item As an extensively studied facial expression, smile and its intensity can be accurately detected on a per frame basis and with simple features and a Support Vector Machine (SVM) classifier, smile classification can achieve an area under the curve (AUC) of 0.95~\cite{Yang_TAC14}. Examples of smile responses associated with zapping and non-zapping behavior are shown in Fig.~\ref{fig:smile_ex}. 
 
 
 \end{itemize}
 
 \begin{figure}[t] 
 \centering
- \subfigure[Zapping]{\includegraphics[width=.5\columnwidth]{fig/response_seq_zap_ex}\label{fig:ex_zap}}
-\subfigure[Non-zapping]{\includegraphics[width=.7\columnwidth]{fig/smile_seq_non_ex.png}\label{fig:ex_non}}
+ \subfigure[Zapping]{\includegraphics[width=.65\columnwidth]{fig/response_seq_zap_ex}\label{fig:ex_zap}}
+\subfigure[Non-zapping]{\includegraphics[width=.8\columnwidth]{fig/smile_seq_non_ex.png}\label{fig:ex_non}}
 \caption{Examples of smile responses for zapping and non-zapping behavior. For the case of non-zapping, smile response intensity and dynamics are quite distinctive compared to the zapping case.}
 \label{fig:smile_ex}
 \end{figure}
+
+\subsection{Smile Intensity Estimation.}
+
+\SFAdd{To predict zapping behavior from smile response, we first explain how we estimate the smile intensity on a per frame basis.} \Songfan{The faces are first extracted using Viola-Jones face detector~\cite{Viola_IJCV04}. We then follow our previous work~\cite{Yang13} to align the faces using dense flow-based similarity registration technique. This registration algorithm aligns every frame with a face to a reference face and the registration results are temporally smoothed. Thus, the person-independent spontaneous facial expression recognition can be carried out in a meaningful manner. The aligned faces which are scaled to $200\times200$ pixels, are divided into $20\times20$ pixel regions. The Local Phase Quantization~\cite{Ojansivu_ICISP08} texture descriptor is computed for each of the regions. These outputs are then concatenated to form the feature for smile detection.}
+
+\Songfan{The smile detection is formulated as a binary classification problem with the smiling face and neutral face being the two class labels. We adopt the linear SVM~\cite{SVMlib} for classification. For accurate person-independent smile detection, the classifier is trained on multiple databases with a large number of subjects from: FEI~\cite{FEI}, Multi-PIE~\cite{MPIE}, CAS-PEAL~\cite{CAS}, CK+~\cite{CKplus}, and data from Google image search similar to~\cite{Le14}. In total, 1543 subjects (1543 smiling faces and 2035 neutral faces) are included for training. }
+
+\begin{figure}[htbp]
+\centering
+    \subfigure[Training data]{\includegraphics[width=.46\columnwidth]{fig/smile_roc_train.eps}\label{fig:smile_roc_train}}
+    \subfigure[Testing data]{\includegraphics[width=.46\columnwidth]{fig/smile_roc_test.eps}\label{fig:smile_roc_test}}
+
+\caption{Classification results of our person-independent smile detection approach shown by ROC curves.}
+\end{figure}
+
+
+\Songfan{A series of tests are carried out in a person-independent manner where no test subject is included during training. The Area Under Curve (AUC) is 0.98 for the 10-fold cross validation (see Fig.~\ref{fig:smile_roc_train}). To demonstrate the generalization of this classifier, we carried out a test on a selection of 10,000 sample frames from our aforementioned database that we collected in this research. The Area Under Curve (AUC) is 0.95 in Fig.~\ref{fig:smile_roc_test}, which means that the smile classifier performs well on unseen data. The probability output of the SVM smile classifier is then recorded as the smile response. We direct interested readers to~\cite{Yang_TAC14} for a more detailed validation on why smile intensity estimation is correlated with the SVM probability output.}
+
 
 \section{Methodology}%: Responselet Dictionary Learning}
 To predict MMZP given smile responses, we formulated it as a zapping vs. non-zapping binary classification problem on a per frame basis. Below we explain in detail how zapping is quantified and how the features are extracted to predict zapping.
@@ -182,6 +201,8 @@ To predict MMZP given smile responses, we formulated it as a zapping vs. non-zap
 
 \subsection{Zapping Quantification.}
 
+Since the subjects are given the option to zap at any time, the fraction of an ad being watched varies for different participants. Fig.~\ref{fig:ad_len_distr} shows the distribution of ad fraction that is being watched. It can be observed that most ads have been watched at least 80\% of their length. Besides, participants in our experiments tended to zap early if they are not attracted to an ad, as evidenced by the left part of the plot (i.e., 0\% to 30\% has a slightly higher probability). To distinguish zapped and non-zapped cases, a Gaussian mixture model with three components is fitted to the data. As seen in Fig.~\ref{fig:ad_len_distr}, the left-most and right-most Gaussian models are with low variance and well capture the distinctiveness of zapping and non-zapping class, respectively. The Gaussian model in the middle with high variance includes the sequences that are on the boundary of two classes. As a result, we empirically select the mean of the second mixture, 0.56, as the threshold to distinguish zapping from non-zapping sequences.
+
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=.85\columnwidth]{fig/ad_len_distr.png}
@@ -189,17 +210,13 @@ To predict MMZP given smile responses, we formulated it as a zapping vs. non-zap
 	\label{fig:ad_len_distr}
 \end{figure}
 
-Since the subjects are given the option to zap at any time, the fraction of an ad being watched varies for different participants. Fig.~\ref{fig:ad_len_distr} shows the distribution of ad fraction that is being watched. It can be observed that most ads have been watched at least 80\% of their length. Besides, participants in our experiments tended to zap early if they are not attracted to an ad, as evidenced by the left part of the plot (i.e., 0\% to 30\% has a slightly higher probability). To distinguish zapped and non-zapped cases, a Gaussian mixture model with three components is fitted to the data. As seen in Fig.~\ref{fig:ad_len_distr}, the left-most and right-most Gaussian models are with low variance and well capture the distinctiveness of zapping and non-zapping class, respectively. The Gaussian model in the middle with high variance includes the sequences that are on the boundary of two classes. As a result, we empirically select the mean of the second mixture, 0.56, as the threshold to distinguish zapping from non-zapping sequences.
-
-
-
 \subsection{Zapping Prediction.}
 
 During the training phase, a dictionary of \textit{responselet} (i.e., small segments of smile response) is learned from the recorded subjects' facial responses. Then given a smile responselet, it is first reconstructed by the learned dictionary and the reconstruction coefficients are used as features to train a zapping prediction model. During testing, reconstruction coefficients for a responselet is used for zapping prediction with the trained model. 
 
 \noindent \textbf{Responselet Dictionary Learning.} The history of the dictionary design can be traced back to the fast Fourier transform (FFT) or wavelets. In recently years, dictionary learning for sparse representation has prevailed in signal processing and computer vision tasks. In our case, we learn the dictionary which can well reconstruct the input signal in a sparse manner. 
 
-Concretely, given a set of $n$ smile responselet, $\X=[\x_1, \cdots, \x_n]\in \mathcal{R}^{m\times n}$, a dictionary $\D=[d_1,\cdots,d_p] \in \mathcal{R}^{m\times p}$ is learned by minimizing
+Concretely, \SFAdd{a smile responselet is defined as a 1-D time series data of length $m$, whose value ranges from 0 to 1}; given a set of $n$ smile responselet, $\X=[\x_1, \cdots, \x_n]\in \mathcal{R}^{m\times n}$, a dictionary $\D=[d_1,\cdots,d_p] \in \mathcal{R}^{m\times p}$ is learned by minimizing
 
 \begin{align}
 \label{eq:learn_dict}
