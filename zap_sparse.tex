@@ -242,15 +242,7 @@ Consider a subject watching an ad as one data sequence, with 51 subjects and 8 a
 \end{figure}
 
 
-\begin{figure*}[t]
-	\centering
-		\includegraphics[width=.8\textwidth]{fig/ad.png}
-	\caption{MMZP of different ads. The lines show the MMZP trends and the bars show the corresponding ground truth zapping distribution. The axis and labels are the same across all sub-figures and are displayed in the first panel only for compactness. We use the same display settings for the rest of the figures.}
-	\label{fig:ad}
-\end{figure*}
-
-As seen in Fig.~\ref{fig:dict}, the learned dictionary atoms start from flat shape (upper left), gradually vary in slope, and \SFAdd{finally transform to shapes representing much more drastic changes (bottom two rows) such as the bell shape}. \SFAdd{The wide variety of the learned dictionary ensures that a responselet can be well characterized by the dictionary}. 
-
+As seen in Fig.~\ref{fig:dict}, the learned dictionary atoms start from flat shape (upper left), gradually vary in slope, and \SFAdd{finally transform to shapes representing much more drastic changes (bottom two rows) such as the bell shape. The wide variety of the learned dictionary ensures that a responselet can be well characterized by the dictionary}. 
 
 \noindent \textbf{Training of Zapping Prediction Model.} Having learned the dictionary $\D$, at each frame, say $k$, we first divide the response from frame 1 to $k$ into $k-10+1$ number of responselets (i.e., 10 frames per responselets) with a stride of one frame in the same way as aforementioned. Then, these responselets are sparsely reconstructed by minimizing
 
@@ -261,22 +253,26 @@ As seen in Fig.~\ref{fig:dict}, the learned dictionary atoms start from flat sha
 
 Thus, for each responselet, we obtain a $p\times 1$ reconstruction coefficient vector. To encode the between frame information, we perform mean-pooling of all available coefficient vectors for the responselets generated from frame 1 to $k$, yielding our final feature representation of size $p\times 1$. 
 
-\SFAdd{
+\noindent \textbf{Zapping Classification.}
+\SFAdd{In order to distinguish zapping from non-zapping sequences, we formulate it as a binary classification problem. The class labels of the data are assigned based on the 56\% threshold shown in Fig.~\ref{ad_len_distr}.}
 
-}
-
-
-Features extracted from training data are then used to learn a linear SVM classifier to predict zapping at each moment (i.e., each frame).
-
-\noindent \textbf{Testing of Zapping Prediction Model.} The zapping prediction model is evaluated using leave-one-subject-out cross validation. In each fold, one subject is held out for testing, and the others are used for training. Besides mean-pooled features, we have also included several other features as baselines for comparison,  including: mean, max, variance of smile response, smile dynamics (meaning that we directly use the length-normalized smile response as features), and smile histogram~\cite{Yang_TAC14}. In addition, we also compare with direct use of the sparse reconstruction coefficients without mean-pooling.
+\SFAdd{During training phase, based on the features extracted from responselet available at each moment, we train a linear SVM classifier according to the label of the entire sequence.} The zapping classifier is evaluated using leave-one-subject-out cross validation. In each fold, one subject is held out for testing, and the others are used for training. Besides mean-pooled features, we have also included several other features as baselines for comparison, including: mean, max, variance of smile response, smile dynamics (meaning that we directly use the length-normalized smile response as features), and smile histogram~\cite{Yang_TAC14}. In addition, we also compare with direct use of the sparse reconstruction coefficients without mean-pooling. 
 
 As shown in Fig.~\ref{fig:cls_performance}, sparse coefficients with mean-pooling significantly outperforms the other features. This is attributed to the fact that mean-pooling takes into the account the between-frame information and yields a more stable representation than other features. Smile variance performs slightly better than other smile response variants. This also demonstrates that the shape of a smile response is discriminative to distinguish zapping from non-zapping. 
 
+\SFAdd{During testing phase, features at each moment are extracted in the same manner as training, and then passed through the zapping classifier. The probability output is considered as our final MMZP representation. In this manner, we are able to predict the zapping probability at each moment. In the following section, MMZP is first examined why it is a valid metric. Several interesting observations regarding the effect of gender, ethnicity, and personal preference are made subsequently from MMZP.}
 
 
 \section{Knowledge Discovery}
 
 As aforementioned, MMZP represents the dynamics of users' interest level while watching an ad. In general, increased MMZP correlates with more chances of zapping due to lack of interest in the ad content. To validate this conclusion, we first examine the effectiveness of MMZP, and then provide a series of knowledge discovery from the observations on MMZP changes. 
+
+\begin{figure*}[t]
+	\centering
+		\includegraphics[width=.8\textwidth]{fig/ad.png}
+	\caption{MMZP of different ads. The lines show the MMZP trends and the bars show the corresponding ground truth zapping distribution. The axis and labels are the same across all sub-figures and are displayed in the first panel only for compactness. We use the same display settings for the rest of the figures.}
+	\label{fig:ad}
+\end{figure*}
 
 \noindent \textbf{MMZP Validation.} To validate the accuracy of MMZP, we first compare it with the actual user zapping behavior. In Fig.~\ref{fig:ad}, the mean MMZP (left axis) of all subjects for each ad is plotted and is compared with the ground truth zapping behavior as shown in the bar plot of each panel (right axis). Note that the zapping behavior is represented by the percentage of an ad being watched, which was recorded during data collection. In general, the fast decreasing pattern of MMZP (less likely to zap) correlates with zapping behavior occurring near the end of an ad (e.g., \textit{Toyota} and \textit{Nissan}). In other words, zapping near the end suggests that more interesting contents in the ad were found by the user. On the other hand, slowly decreasing or stable MMZP indicates more chances of zapping (e.g., \textit{Chevy} and \textit{Pizza Hut}). This is congruent with both zapping distribution in the bar plot and the ad entertaining level of each ad as listed in Table~\ref{table:ads}. 
 
