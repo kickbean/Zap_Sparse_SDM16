@@ -1,0 +1,162 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{Abbasi_15}
+A.~Abbasi, R.~Y. Lau, and D.~E. Brown.
+\newblock Predicting behavior.
+\newblock {\em IEEE Intell. Syst.}, 2015.
+
+\bibitem{Le14}
+L.~An, S.~Yang, and B.~Bhanu.
+\newblock Efficient smile detection by extreme learning machine.
+\newblock {\em Neurocomputing}, 2014.
+
+\bibitem{SVMlib}
+C.-C. Chang and C.-J. Lin.
+\newblock Libsvm: A library for support vector machines.
+\newblock {\em ACM Trans. Intell. Syst. Technol.}, 2011.
+
+\bibitem{Chen2012}
+J.~Chen, D.~Chen, Y.~Gong, M.~Yu, K.~Zhang, and L.~Wang.
+\newblock Facial expression recognition using geometric and appearance
+  features.
+\newblock In {\em ICIMCS}, 2012.
+
+\bibitem{Ekman93}
+P.~Ekman.
+\newblock Facial expression and emotion.
+\newblock {\em American Psychologist}, 1993.
+
+\bibitem{Elpers03}
+J.~L.~W. Elpers, M.~Wedel, and R.~G. Pieters.
+\newblock Why do consumers stop viewing television commercials? {Two}
+  experiments on the influence of moment-to-moment entertainment and
+  information value.
+\newblock {\em J. Marketing. Res.}, 2003.
+
+\bibitem{CAS}
+W.~Gao, B.~Cao, S.~Shan, X.~Chen, D.~Zhou, X.~Zhang, and D.~Zhao.
+\newblock The {CAS-PEAL} large-scale chinese face database and baseline
+  evaluations.
+\newblock {\em IEEE Trans. Syst., Man, Cybern. A, Syst.,Humans}, 2008.
+
+\bibitem{MPIE}
+R.~Gross, I.~Matthews, J.~Cohn, T.~Kanade, and S.~Baker.
+\newblock Multi-{PIE}.
+\newblock {\em Image Vision Comput.}, 2010.
+
+\bibitem{Hu04}
+C.~Hu, Y.~Chang, R.~Feris, and M.~Turk.
+\newblock Manifold based analysis of facial expression.
+\newblock In {\em CVPR}, 2004.
+
+\bibitem{Kotsia07}
+I.~Kotsia and I.~Pitas.
+\newblock Facial expression recognition in image sequences using geometric
+  deformation features and support vector machines.
+\newblock {\em IEEE Trans. Image Process.}, 2007.
+
+\bibitem{CKplus}
+P.~Lucey, J.~Cohn, T.~Kanade, J.~Saragih, Z.~Ambadar, and I.~Matthews.
+\newblock The extended cohn-kanade dataset ({CK+}): A complete dataset for
+  action unit and emotion-specified expression.
+\newblock In {\em CVPR}, 2010.
+
+\bibitem{Lucey06}
+S.~Lucey, I.~Matthews, C.~Hu, Z.~Ambadar, F.~De~La~Torre, and J.~Cohn.
+\newblock {AAM} derived face representations for robust facial action
+  recognition.
+\newblock In {\em FG}, 2006.
+
+\bibitem{spams}
+J.~Mairal, F.~Bach, J.~Ponce, and G.~Sapiro.
+\newblock Online learning for matrix factorization and sparse coding.
+\newblock {\em J. Mach. Learn. Res.}, 2010.
+
+\bibitem{McDuff13}
+D.~McDuff, R.~E. Kaliouby, E.~Kodra, and R.~W. Picard.
+\newblock Measuring voter's candidate preference based on affective responses
+  to election debates.
+\newblock In {\em ACII}, 2013.
+
+\bibitem{amfed}
+D.~McDuff, R.~E. Kaliouby, T.~Senechal, M.~Amr, J.~F. Cohn, and R.~W. Picard.
+\newblock Affectiva-{MIT} facial expression dataset ({AM-FED}): Naturalistic
+  and spontaneous facial expressions collected in-the-wild.
+\newblock In {\em CVPR Workshops}, 2013.
+
+\bibitem{Ojansivu_ICISP08}
+V.~Ojansivu and J.~Heikkil\"a.
+\newblock Blur insensitive texture classification using local phase
+  quantization.
+\newblock In {\em ICISP}, 2008.
+
+\bibitem{Poels06}
+K.~Poels and S.~Dewitte.
+\newblock How to capture the heart? {Reviewing} 20 years of emotion measurement
+  in advertising.
+\newblock Technical report, Katholieke Universiteit Leuven, 2006.
+
+\bibitem{Survey2015}
+E.~Sariyanidi, H.~Gunes, and A.~Cavallaro.
+\newblock Automatic analysis of facial affect: A survey of registration,
+  representation, and recognition.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 2015.
+
+\bibitem{Teixeira12}
+T.~Teixeira, M.~Wedel, and R.~Pieters.
+\newblock Emotion-induced engagement in internet video advertisements.
+\newblock {\em J. Marketing. Res.}, 2012.
+
+\bibitem{FEI}
+C.~E. Thomaz and G.~A. Giraldi.
+\newblock A new ranking method for principal components analysis and its
+  application to face image analysis.
+\newblock {\em Image Vision Comput.}, 2010.
+
+\bibitem{Valstar05}
+M.~Valstar, I.~Patras, and M.~Pantic.
+\newblock Facial action unit detection using probabilistic actively learned
+  support vector machines on tracked facial point data.
+\newblock In {\em CVPR Workshops}, 2005.
+
+\bibitem{Viola_IJCV04}
+P.~Viola and M.~Jones.
+\newblock Robust real-time face detection.
+\newblock {\em Int. J. Comput. Vision}, 2004.
+
+\bibitem{Whitehill09}
+J.~Whitehill, G.~Littlewort, I.~Fasel, M.~Bartlett, and J.~Movellan.
+\newblock Toward practical smile detection.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 2009.
+
+\bibitem{Yang13}
+S.~Yang, L.~An, B.~Bhanu, and N.~Thakoor.
+\newblock Improving action units recognition using dense flow-based face
+  registration in video.
+\newblock In {\em FG}, 2013.
+
+\bibitem{Yang_FG15}
+S.~Yang, L.~An, M.~Kafai, and B.~Bhanu.
+\newblock To skip or not to skip? {A} dataset of spontaneous affective response
+  of online advertising ({SARA}) for audience behavior analysis.
+\newblock In {\em FG}, 2015.
+
+\bibitem{Yang12}
+S.~Yang and B.~Bhanu.
+\newblock Understanding discrete facial expressions in video using an emotion
+  avatar image.
+\newblock {\em IEEE Trans. Syst. Man, Cybern. B, Cybern.}, 2012.
+
+\bibitem{Yang_TAC14}
+S.~Yang, M.~Kafai, L.~An, and B.~Bhanu.
+\newblock Zapping index:using smile to measure advertisement zapping
+  likelihood.
+\newblock {\em IEEE Trans. Affect. Comput.}, 2014.
+
+\bibitem{Zhao07}
+G.~Zhao and M.~Pietik\"ainen.
+\newblock Dynamic texture recognition using local binary patterns with an
+  application to facial expressions.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 2007.
+
+\end{thebibliography}

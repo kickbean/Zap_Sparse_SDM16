@@ -5,7 +5,7 @@
 @Article{Abbasi_15,
   Title                    = {Predicting Behavior},
   Author                   = {Abbasi, Ahmed and Lau, Raymond Y.K. and Brown, Donald E.},
-  Journal                  = {IEEE Intelligent Systems},
+  Journal                  = {IEEE Intell. Syst.},
   Year                     = {2015},
 
   Owner                    = {Songfan},
@@ -32,11 +32,22 @@
   Timestamp                = {2013.05.29}
 }
 
-@Manual{SVMlib,
-  Title                    = {{LIBSVM}: A Library for Support Vector Machines},
-  Author                   = {Chih-Chung Chang and Chih-Jen Lin},
-  Note                     = {Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}},
-  Year                     = {2001}
+@Article{SVMlib,
+  Title                    = {LIBSVM: A Library for Support Vector Machines},
+  Author                   = {Chang, Chih-Chung and Lin, Chih-Jen},
+  Journal                  = {ACM Trans. Intell. Syst. Technol.},
+  Year                     = {2011},
+
+  Acmid                    = {1961199},
+  Address                  = {New York, NY, USA},
+  Articleno                = {27},
+  Doi                      = {10.1145/1961189.1961199},
+  ISSN                     = {2157-6904},
+  Issue_date               = {April 2011},
+  Keywords                 = {Classification LIBSVM optimization regression support vector machines SVM},
+  Numpages                 = {27},
+  Publisher                = {ACM},
+  Url                      = {http://doi.acm.org/10.1145/1961189.1961199}
 }
 
 @Article{LARS,
@@ -61,9 +72,9 @@
 }
 
 @Article{Elpers03,
-  Title                    = {Why Do Consumers Stop Viewing Television Commercials? Two Experiments on the Influence of Moment-to-Moment Entertainment and Information Value},
+  Title                    = {Why Do Consumers Stop Viewing Television Commercials? {Two} Experiments on the Influence of Moment-to-Moment Entertainment and Information Value},
   Author                   = {Josephine L.C.M. Woltman Elpers and Michel Wedel and Rik G.M. Pieters},
-  Journal                  = {Journal of Marketing Research},
+  Journal                  = {J. Marketing. Res.},
   Year                     = {2003},
 
   Owner                    = {Songfan},
@@ -85,14 +96,14 @@
 @Article{CAS,
   Title                    = {The {CAS-PEAL} Large-Scale Chinese Face Database and Baseline Evaluations},
   Author                   = {Wen Gao and Bo Cao and Shiguang Shan and Xilin Chen and Delong Zhou and Xiaohua Zhang and Debin Zhao},
-  Journal                  = {IEEE Trans. on Systems, Man and Cybernetics, Part A},
+  Journal                  = {IEEE Trans. Syst., Man, Cybern. A, Syst.,Humans},
   Year                     = {2008}
 }
 
 @Article{MPIE,
   Title                    = {Multi-{PIE}},
   Author                   = {Ralph Gross and Iain Matthews and Jeffrey Cohn and Takeo Kanade and Simon Baker},
-  Journal                  = {Image and Vision Computing },
+  Journal                  = {Image Vision Comput.},
   Year                     = {2010},
 
   ISSN                     = {0262-8856},
@@ -113,7 +124,7 @@
 @InProceedings{Hu04,
   Title                    = {Manifold Based Analysis of Facial Expression},
   Author                   = {Changbo Hu and Ya Chang and Feris, R. and Turk, M.},
-  Booktitle                = {IEEE Conf. on Computer Vision and Pattern Recognition Workshops},
+  Booktitle                = {CVPR},
   Year                     = {2004},
 
   Doi                      = {10.1109/CVPR.2004.116},
@@ -147,7 +158,7 @@
 @Article{Kotsia07,
   Title                    = {Facial Expression Recognition in Image Sequences Using Geometric Deformation Features and Support Vector Machines},
   Author                   = {Kotsia, I. and Pitas, I.},
-  Journal                  = {IEEE Trans. on Image Processing},
+  Journal                  = {IEEE Trans. Image Process.},
   Year                     = {2007},
 
   Doi                      = {10.1109/TIP.2006.884954},
@@ -158,9 +169,8 @@
 @InProceedings{CKplus,
   Title                    = {The Extended Cohn-Kanade Dataset ({CK+}): A complete dataset for action unit and emotion-specified expression},
   Author                   = {Lucey, P. and Cohn, J.F. and Kanade, T. and Saragih, J. and Ambadar, Z. and Matthews, I.},
-  Booktitle                = {IEEE Conf. on Computer Vision and Pattern Recognition Workshops},
+  Booktitle                = {CVPR},
   Year                     = {2010},
-  Pages                    = {94-101},
 
   Doi                      = {10.1109/CVPRW.2010.5543262},
   ISSN                     = {2160-7508},
@@ -170,7 +180,7 @@
 @InProceedings{Lucey06,
   Title                    = {{AAM} derived face representations for robust facial action recognition},
   Author                   = {Lucey, S. and Matthews, I. and Changbo Hu and Ambadar, Z. and De La Torre, F. and Cohn, J.},
-  Booktitle                = {Int. Conf. on Automatic Face and Gesture Recognition},
+  Booktitle                = {FG},
   Year                     = {2006},
 
   Doi                      = {10.1109/FGR.2006.17},
@@ -180,7 +190,7 @@
 @Article{spams,
   Title                    = {Online learning for matrix factorization and sparse coding},
   Author                   = {J. Mairal and F. Bach and J. Ponce and G. Sapiro},
-  Journal                  = {Journal of Machine Learning Research},
+  Journal                  = {J. Mach. Learn. Res.},
   Year                     = {2010},
 
   Owner                    = {Songfan},
@@ -219,22 +229,17 @@
 }
 
 @InProceedings{amfed,
-  Title                    = {Affectiva-MIT Facial Expression Dataset (AM-FED): Naturalistic and Spontaneous Facial Expressions Collected In-the-Wild},
+  Title                    = {Affectiva-{MIT} Facial Expression Dataset ({AM-FED}): Naturalistic and Spontaneous Facial Expressions Collected In-the-Wild},
   Author                   = {Daniel McDuff and Rana El Kaliouby and Thibaud Senechal and May Amr and Jeffrey F. Cohn and Rosalind W. Picard},
   Booktitle                = {CVPR Workshops},
-  Year                     = {2013},
-  Pages                    = {881-888}
+  Year                     = {2013}
 }
 
 @InProceedings{Ojansivu_ICISP08,
   Title                    = {Blur Insensitive Texture Classification Using Local Phase Quantization},
   Author                   = {Ojansivu, V. and Heikkil\"a, J.},
-  Booktitle                = {Int. Conf. on Image and Signal Processing},
+  Booktitle                = {ICISP},
   Year                     = {2008},
-
-  Address                  = {Berlin, Heidelberg},
-  Publisher                = {Springer-Verlag},
-  Series                   = {ICISP '08},
 
   Acmid                    = {1426636},
   Doi                      = {http://dx.doi.org/10.1007/978-3-540-69905-7_27},
@@ -251,7 +256,7 @@
 }
 
 @TechReport{Poels06,
-  Title                    = {How to capture the heart? Reviewing 20 years of emotion measurement in advertising},
+  Title                    = {How to capture the heart? {Reviewing} 20 years of emotion measurement in advertising},
   Author                   = {Poels, K and Dewitte, Siegfried},
   Institution              = {Katholieke Universiteit Leuven},
   Year                     = {2006},
@@ -263,13 +268,8 @@
 @Article{Survey2015,
   Title                    = {Automatic Analysis of Facial Affect: A Survey of Registration, Representation, and Recognition},
   Author                   = {Sariyanidi, E. and Gunes, H. and Cavallaro, A.},
-  Journal                  = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  Journal                  = {IEEE Trans. Pattern Anal. Mach. Intell.},
   Year                     = {2015},
-
-  Month                    = {June},
-  Number                   = {6},
-  Pages                    = {1113-1133},
-  Volume                   = {37},
 
   ISSN                     = {0162-8828},
   Keywords                 = {emotion recognition;face recognition;image registration;image representation;automatic facial affect analysis;dimensionality reduction;emotion recognition;face recognition;face registration;face representation;Emotion recognition;Face;Face recognition;Histograms;Lighting;Shape;Training;Affect Sensing and Analysis;Affect sensing and analysis;Facial Expressions;Facial Representations;Registration;Survey;facial expressions;facial representations;registration;survey}
@@ -300,7 +300,7 @@
 @Article{Teixeira12,
   Title                    = {Emotion-Induced Engagement in Internet Video Advertisements},
   Author                   = {Thales Teixeira and Michel Wedel and Rik Pieters},
-  Journal                  = {Journal of Marketing Research},
+  Journal                  = {J. Marketing. Res.},
   Year                     = {2012},
 
   Owner                    = {Le},
@@ -311,7 +311,7 @@
 @Article{FEI,
   Title                    = {A new ranking method for principal components analysis and its application to face image analysis },
   Author                   = {Carlos Eduardo Thomaz and Gilson Antonio Giraldi},
-  Journal                  = {Image and Vision Computing },
+  Journal                  = {Image Vision Comput.},
   Year                     = {2010},
 
   ISSN                     = {0262-8856},
@@ -321,7 +321,7 @@
 @InProceedings{Valstar05,
   Title                    = {Facial Action Unit Detection using Probabilistic Actively Learned Support Vector Machines on Tracked Facial Point Data},
   Author                   = {Valstar, M.F. and Patras, I. and Pantic, M.},
-  Booktitle                = {IEEE Conf. on Computer Vision and Pattern Recognition Workshops},
+  Booktitle                = {CVPR Workshops},
   Year                     = {2005},
 
   Doi                      = {10.1109/CVPR.2005.457},
@@ -332,14 +332,14 @@
 @Article{Viola_IJCV04,
   Title                    = {Robust Real-time Face Detection},
   Author                   = {Paul Viola and Michael Jones},
-  Journal                  = {Int. Journal of Computer Vision},
+  Journal                  = {Int. J. Comput. Vision},
   Year                     = {2004}
 }
 
 @Article{Whitehill09,
   Title                    = {Toward Practical Smile Detection},
   Author                   = {Whitehill, J. and Littlewort, Gwen and Fasel, Ian and Bartlett, M. and Movellan, J.},
-  Journal                  = {IEEE Trans. on Pattern Analysis and Machine Intelligence},
+  Journal                  = {IEEE Trans. Pattern Anal. Mach. Intell.},
   Year                     = {2009},
 
   Doi                      = {10.1109/TPAMI.2009.42},
@@ -350,14 +350,14 @@
 @InProceedings{Yang13,
   Title                    = {Improving Action Units Recognition Using Dense Flow-based Face Registration in Video},
   Author                   = {Yang, S. and An, L. and Bhanu, B. and Thakoor, N.},
-  Booktitle                = {Int. Conf. on Automatic Face and Gesture Recognition},
+  Booktitle                = {FG},
   Year                     = {2013}
 }
 
 @InProceedings{Yang_FG15,
-  Title                    = {To Skip or not to Skip? A Dataset of Spontaneous Affective Response of Online Advertising (SARA) for Audience Behavior Analysis},
+  Title                    = {To Skip or not to Skip? {A} Dataset of Spontaneous Affective Response of Online Advertising ({SARA}) for Audience Behavior Analysis},
   Author                   = {Songfan Yang and Le An and Mehran Kafai and Bir Bhanu},
-  Booktitle                = {IEEE int. Conf. on Automatic Face Gesture Recognition},
+  Booktitle                = {FG},
   Year                     = {2015},
 
   Owner                    = {Songfan},
@@ -367,7 +367,7 @@
 @Article{Yang12,
   Title                    = {Understanding Discrete Facial Expressions in Video Using an Emotion Avatar Image},
   Author                   = {Songfan Yang and Bhanu, B.},
-  Journal                  = {IEEE Trans. on Systems, Man, and Cybernetics, Part B},
+  Journal                  = {IEEE Trans. Syst. Man, Cybern. B, Cybern.},
   Year                     = {2012},
 
   Doi                      = {10.1109/TSMCB.2012.2192269},
@@ -388,7 +388,7 @@
 @Article{Yang_TAC14,
   Title                    = {Zapping Index:Using Smile to Measure Advertisement Zapping Likelihood},
   Author                   = {Songfan Yang and Mehran Kafai and Le An and Bir Bhanu},
-  Journal                  = {IEEE Trans. on Affective Computing},
+  Journal                  = {IEEE Trans. Affect. Comput.},
   Year                     = {2014},
 
   Owner                    = {Songfan},
@@ -398,7 +398,7 @@
 @Article{Zhao07,
   Title                    = {Dynamic texture recognition Using Local Binary Patterns with an Application to Facial Expressions},
   Author                   = {Guoying Zhao and Pietik\"ainen, M.},
-  Journal                  = {IEEE Trans. on PAMI},
+  Journal                  = {IEEE Trans. Pattern Anal. Mach. Intell.},
   Year                     = {2007},
 
   Doi                      = {10.1109/TPAMI.2007.1110},
