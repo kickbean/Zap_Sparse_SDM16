@@ -216,21 +216,21 @@ During the training phase, a dictionary of \textit{responselet} (i.e., small seg
 
 \noindent \textbf{Responselet Dictionary Learning.} The history of the dictionary design can be traced back to the fast Fourier transform (FFT) or wavelets. In recently years, dictionary learning for sparse representation has prevailed in signal processing and computer vision tasks. In our case, we learn the dictionary which can well reconstruct the input signal in a sparse manner. 
 
-Concretely, \SFAdd{a smile responselet is defined as a 1-D time series data of length $m$, whose value ranges from 0 to 1}; given a set of $n$ smile responselet, $\X=[\x_1, \cdots, \x_n]\in \mathcal{R}^{m\times n}$, a dictionary $\D=[d_1,\cdots,d_p] \in \mathcal{R}^{m\times p}$ is learned by minimizing
+Concretely, \SFAdd{a smile responselet is defined as a 1-D time series data of length $m$, whose value ranges from 0 to 1}; given a set of $n$ smile responselet, $\X=[\x_1, \cdots, \x_n]\in \mathcal{R}^{m\times n}$, a dictionary $\D=[\d_1,\cdots,\d_p] \in \mathcal{R}^{m\times p}$ is learned by minimizing
 
 \begin{align}
 \label{eq:learn_dict}
 \min_{\D , \alpha} \sum_{i=1}^n ||\x_i-\D\alpha_i||^2_2 +\lambda ||\alpha_i||_1,
 \end{align}
 
-\noindent where $\forall j=1,\cdots,k, d^\top_j d_j \leq 1$. $\lambda$ is a regularization parameter to control the sparsity on $\alpha$. Eq.~(\ref{eq:learn_dict}) can be efficiently solved by an online optimization algorithm~\cite{spams}. 
+\noindent where $\forall j=1,\cdots,k, \d^\top_j \d_j \leq 1$. $\lambda$ is a regularization parameter to control the sparsity on $\alpha$. \SFAdd{The $\ell_2$ regularization term prevents arbitrarily large values of $\D$, and the $\ell_1$ regularization term results in a sparse solution for $\alpha$.} Eq.~(\ref{eq:learn_dict}) can be efficiently solved by an online optimization algorithm~\cite{spams}. 
 
-Consider a subject watching an ad as one data sequence, with 51 subjects and 8 ads, there are 408 sequences. As seen in Fig.~\ref{fig:smile_ex}, the dynamics of the smile response has different lengths. Therefore, each sequence is normalized to 100 frames and each responselet contains 10 frames and the stride of the moving window for the next responselet is set to 1. A dictionary with $p=36$ responselet atoms is learned and visualized in Fig.~\ref{fig:dict} with atoms sorted by their absolute gradient variance. 
+Consider a subject watching an ad as one data sequence, with 51 subjects and 8 ads, there are 408 sequences. As seen in Fig.~\ref{fig:smile_ex}, the dynamics of the smile response has different lengths. \Songfan{Therefore, each sequence is normalized to 100 frames; each responselet contains 10 frames, which means $m=10$, and the stride of the moving window for the next responselet is set to 1.} \SFAdd{This results in approximately $40,000$ responselets.} A dictionary with $p=36$ responselet atoms is learned and visualized in Fig.~\ref{fig:dict} with atoms sorted by their absolute gradient variance. 
 
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=1\columnwidth]{fig/dict.png}
-	\caption{The learned responselet dictionary.}
+	\caption{The learned responselet dictionary. The responselet length is set to 10 in our experiment. }
 	\label{fig:dict}
 \end{figure}
 
@@ -249,10 +249,24 @@ Consider a subject watching an ad as one data sequence, with 51 subjects and 8 a
 	\label{fig:ad}
 \end{figure*}
 
-As seen in Fig.~\ref{fig:dict}, the learned dictionary atoms start from flat shape (upper left), gradually vary in slope, and finally transform to bell shapes representing much more fine-grained changes (bottom two rows). The expressiveness of the learned dictionary ensures that a new responselet can be well represented. 
+As seen in Fig.~\ref{fig:dict}, the learned dictionary atoms start from flat shape (upper left), gradually vary in slope, and \SFAdd{finally transform to shapes representing much more drastic changes (bottom two rows) such as the bell shape}. \SFAdd{The wide variety of the learned dictionary ensures that a responselet can be well characterized by the dictionary}. 
 
 
-\noindent \textbf{Training of Zapping Prediction Model.} Having learned the dictionary $\D$, at each frame, say $k$, we first divide the response from frame 1 to $k$ into $k-10+1$ number of responselets (i.e., 10 frames per responselets) with a stride of one frame in the same way as aforementioned. Then, these responselets are sparsely reconstructed by $\D$ using Eq.~(\ref{eq:learn_dict}) with $\D$ fixed. Thus, for each responselet, we obtain a $p\times 1$ reconstruction coefficient vector. To encode the between frame information, we perform mean-pooling of all available coefficient vectors for the responselets generated from frame 1 to $k$, yielding our final feature representation of size $p\times 1$. Features extracted from training data are then used to learn a linear SVM classifier to predict zapping at each moment (i.e., each frame).
+\noindent \textbf{Training of Zapping Prediction Model.} Having learned the dictionary $\D$, at each frame, say $k$, we first divide the response from frame 1 to $k$ into $k-10+1$ number of responselets (i.e., 10 frames per responselets) with a stride of one frame in the same way as aforementioned. Then, these responselets are sparsely reconstructed by minimizing
+
+\begin{align}
+\label{eq:solve_alpha}
+\min_{\alpha} \sum_{i=1}^n ||\x_i-\D\alpha_i||^2_2 +\lambda ||\alpha_i||_1.
+\end{align}
+
+Thus, for each responselet, we obtain a $p\times 1$ reconstruction coefficient vector. To encode the between frame information, we perform mean-pooling of all available coefficient vectors for the responselets generated from frame 1 to $k$, yielding our final feature representation of size $p\times 1$. 
+
+\SFAdd{
+
+}
+
+
+Features extracted from training data are then used to learn a linear SVM classifier to predict zapping at each moment (i.e., each frame).
 
 \noindent \textbf{Testing of Zapping Prediction Model.} The zapping prediction model is evaluated using leave-one-subject-out cross validation. In each fold, one subject is held out for testing, and the others are used for training. Besides mean-pooled features, we have also included several other features as baselines for comparison,  including: mean, max, variance of smile response, smile dynamics (meaning that we directly use the length-normalized smile response as features), and smile histogram~\cite{Yang_TAC14}. In addition, we also compare with direct use of the sparse reconstruction coefficients without mean-pooling.
 
